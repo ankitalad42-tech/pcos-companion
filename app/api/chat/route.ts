@@ -25,7 +25,8 @@ export async function POST(req: Request) {
         stopWhen: stepCountIs(5),
         providerOptions: {
             openai: {
-                reasoning: { "effort": "low", "summary": "auto" },
+                reasoningSummary: 'auto',
+                reasoningEffort: 'low',
             }
         }
     });
