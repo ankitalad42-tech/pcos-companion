@@ -6,8 +6,7 @@
 
 /* 
 =====================================================
-TAILWIND THEME WIRING  — DO NOT REMOVE
-Maps CSS variables → Tailwind utilities 
+TAILWIND THEME WIRING — REQUIRED
 =====================================================
 */
 @theme inline {
@@ -59,13 +58,14 @@ Maps CSS variables → Tailwind utilities
 
 /* 
 =====================================================
-LIGHT THEME COLORS  — Pastel PCOS Theme
+LIGHT THEME COLORS — UPDATED CLEANER PALETTE
 =====================================================
 */
 :root {
   --radius: 0.625rem;
 
-  --background: #fff6fa;
+  /* CLEAN SOFT BEIGE-WHITE BACKGROUND */
+  --background: #fffdf9;
   --foreground: #2a1d25;
 
   --card: #ffffff;
@@ -108,7 +108,7 @@ LIGHT THEME COLORS  — Pastel PCOS Theme
 
 /* 
 =====================================================
-DARK MODE COLORS — Pastel deep theme
+DARK MODE — SAME AS BEFORE
 =====================================================
 */
 .dark {
@@ -140,7 +140,7 @@ DARK MODE COLORS — Pastel deep theme
 
 /* 
 =====================================================
-BASE LAYER — Enables Tailwind utilities bg-background etc.
+BASE LAYER — ENABLES TAILWIND BG-BACKGROUND
 =====================================================
 */
 @layer base {
@@ -161,54 +161,69 @@ BASE LAYER — Enables Tailwind utilities bg-background etc.
 
 /* 
 =====================================================
-CUTE ASSISTANT MESSAGE BUBBLE STYLES
+🌸 ASSISTANT BUBBLE — FINAL CUTE DESIGN
 =====================================================
 */
 
 .assistant-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  margin: 12px 0;
+  gap: 12px;
+  margin: 14px 0;
 }
 
+/* Logo avatar style */
 .assistant-avatar-img {
   border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(255, 150, 200, 0.3);
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 3px 6px rgba(255, 150, 200, 0.35);
 }
 
+/* Soft pastel bubble */
 .fancy-bubble {
-  background: linear-gradient(135deg, #ffe0f5 0%, #f7d9ff 100%);
-  border-radius: 1.3rem;
+  background: linear-gradient(135deg, #fff2fa 0%, #ffe9f7 100%);
+  border-radius: 1.35rem;
   padding: 1rem 1.25rem;
-  border: 1px solid #f8c6e8;
-  box-shadow: 0 3px 8px rgba(255, 140, 180, 0.25);
+  border: 1px solid #ffd3e6;
   max-width: 85%;
   position: relative;
-  animation: fadeIn 0.35s ease-out;
+
+  /* Softer floating animation */
+  animation: softFloat 3s ease-in-out infinite, fadeIn 0.35s ease-out;
+  box-shadow: 0 6px 14px rgba(255, 180, 210, 0.28);
 }
 
+/* Bubble tail */
 .bubble-tail {
   position: absolute;
-  left: -8px;
-  bottom: 10px;
+  left: -7px;
+  bottom: 12px;
   width: 14px;
   height: 14px;
   background: inherit;
-  border-left: 1px solid #f8c6e8;
-  border-bottom: 1px solid #f8c6e8;
+  border-left: 1px solid #ffd3e6;
+  border-bottom: 1px solid #ffd3e6;
   transform: rotate(45deg);
   border-bottom-left-radius: 4px;
 }
 
+/* Bubble text */
 .assistant-text {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--foreground);
   white-space: pre-line;
 }
 
-/* Fade-in */
+/* Floating softness */
+@keyframes softFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Fade in effect */
 @keyframes fadeIn {
   from {
     opacity: 0;
