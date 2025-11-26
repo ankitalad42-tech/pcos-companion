@@ -14,7 +14,6 @@ export function AssistantMessage({
   durations?: Record<string, number>;
   onDurationChange?: (key: string, duration: number) => void;
 }) {
-  // Track streaming time
   const [startTime] = useState(Date.now());
   const id = message.id;
 
@@ -34,7 +33,12 @@ export function AssistantMessage({
       <div className="assistant-bubble">
         {message.parts?.map((part, index) =>
           part.type === "text" ? (
-            <p key={index}>{part.text}</p>
+            <p
+              key={index}
+              className="whitespace-pre-line leading-relaxed"
+            >
+              {part.text}
+            </p>
           ) : null
         )}
       </div>
