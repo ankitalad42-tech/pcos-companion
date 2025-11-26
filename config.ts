@@ -29,7 +29,7 @@ export const DATE_AND_TIME = getDateAndTime();
 // Branding
 // ---------------------------------------------------------------------------
 export const AI_NAME = "PCOS Companion";
-export const OWNER_NAME = "Ankita and Saba (BITSoM MBA ’25)";
+export const OWNER_NAME = "Ankita and Saba (BITSoM MBA ’26)";
 
 export const WELCOME_MESSAGE = `Hi, I’m ${AI_NAME} — an educational assistant for people living with PCOS.
 
