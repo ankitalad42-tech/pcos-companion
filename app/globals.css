@@ -1,140 +1,89 @@
-/* === Tailwind base imports === */
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Dark mode variant */
-@custom-variant dark (&:is(.dark *));
-
-/* Theme variable mapping */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-destructive: var(--destructive);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
-/* ========================================================= */
-/* =============== PCOS Companion Brand Theme =============== */
-/* ========================================================= */
+/*
+  PCOS Companion Theme Colors
+  Pink + Lavender + Soft Peach
+*/
 
 :root {
   --radius: 0.625rem;
 
-  /* 🎀 PCOS Color Palette */
-  --pcos-pink: #FF8FA9;
-  --pcos-pink-light: #FFE6EE;
-  --pcos-purple: #C7A3F5;
-  --pcos-purple-light: #F3E8FF;
-  --pcos-dark: #4A0E2E;
-  --pcos-gray: #FAF9FA;
+  /* Main background + text */
+  --background: #fff6fa;
+  --foreground: #2a1d25;
 
-  /* 🌸 Light Mode Colors */
-  --background: var(--pcos-gray);
-  --foreground: var(--pcos-dark);
-
+  /* Cards & chat bubbles */
   --card: #ffffff;
-  --card-foreground: var(--pcos-dark);
+  --card-foreground: #2a1d25;
 
   --popover: #ffffff;
-  --popover-foreground: var(--pcos-dark);
+  --popover-foreground: #2a1d25;
 
-  --primary: var(--pcos-pink);
-  --primary-foreground: #ffffff;
+  /* BRAND COLORS */
+  --primary: #ff76a6; /* PCOS pink */
+  --primary-foreground: white;
 
-  --secondary: var(--pcos-purple-light);
-  --secondary-foreground: var(--pcos-dark);
+  --secondary: #f4e1ff; /* soft lavender */
+  --secondary-foreground: #2a1d25;
 
-  --muted: var(--pcos-pink-light);
-  --muted-foreground: var(--pcos-dark);
+  --muted: #ffe6f0;
+  --muted-foreground: #6f5b6a;
 
-  --accent: var(--pcos-purple-light);
-  --accent-foreground: var(--pcos-dark);
+  --accent: #f3ddff;
+  --accent-foreground: #2a1d25;
 
-  --destructive: #E5484D;
+  --border: #ffd4e2;
+  --input: #ffe4ef;
+  --ring: #ff9dc2;
 
-  --border: #eec3d6;
-  --input: #fde7f0;
-  --ring: var(--pcos-pink);
+  /* Sidebar (if used later) */
+  --sidebar: #fff6fa;
+  --sidebar-foreground: #2a1d25;
+  --sidebar-primary: #ff76a6;
+  --sidebar-primary-foreground: white;
+  --sidebar-accent: #ffeaf4;
+  --sidebar-accent-foreground: #2a1d25;
+  --sidebar-border: #ffd4e2;
+  --sidebar-ring: #ff9dc2;
 
-  --sidebar: #ffffff;
-  --sidebar-foreground: var(--pcos-dark);
-  --sidebar-primary: var(--pcos-pink);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--pcos-purple-light);
-  --sidebar-accent-foreground: var(--pcos-dark);
-  --sidebar-border: #f7ddec;
-  --sidebar-ring: var(--pcos-pink);
+  /* Chart colors (unused but fine to keep) */
+  --chart-1: #ff7bab;
+  --chart-2: #c08cff;
+  --chart-3: #ffb4d3;
+  --chart-4: #ffddf0;
+  --chart-5: #e2c9ff;
 }
 
-/* 🌙 DARK MODE */
+/* DARK MODE — good for accessibility */
 .dark {
-  --background: #2a0f21;
-  --foreground: #ffffff;
+  --background: #1f1118;
+  --foreground: #fce6ee;
 
-  --card: #3a1430;
-  --card-foreground: #ffffff;
+  --card: #2b1821;
+  --card-foreground: #fce6ee;
 
-  --popover: #3a1430;
-  --popover-foreground: #ffffff;
+  --popover: #2b1821;
+  --popover-foreground: #fce6ee;
 
-  --primary: var(--pcos-pink);
-  --primary-foreground: #ffffff;
+  --primary: #ff9fca;
+  --primary-foreground: #2b1821;
 
-  --secondary: #5d3a86;
+  --secondary: #4a2d52;
   --secondary-foreground: #ffffff;
 
-  --muted: #4a2840;
-  --muted-foreground: #e7c4d0;
+  --muted: #4a2d52;
+  --muted-foreground: #d9b7c9;
 
-  --accent: var(--pcos-purple);
+  --accent: #5e3d69;
   --accent-foreground: #ffffff;
 
-  --destructive: #E5484D;
-
-  --border: #5b3b56;
-  --input: #6d3e5c;
-  --ring: var(--pcos-purple);
-
-  --sidebar: #3a1430;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: var(--pcos-pink);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #5d3a86;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #5b3b56;
-  --sidebar-ring: var(--pcos-purple);
+  --border: #57384c;
+  --input: #6e4c63;
+  --ring: #ffbad9;
 }
 
-/* Base layer overrides */
+/* Apply styles */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -142,6 +91,15 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Chat bubbles */
+  .assistant-bubble {
+    @apply bg-muted text-foreground rounded-2xl px-4 py-3 shadow-sm;
+  }
+
+  .user-bubble {
+    @apply bg-secondary text-foreground rounded-2xl px-4 py-3 shadow;
   }
 
   .single-char-link {
