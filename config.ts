@@ -32,21 +32,17 @@ export const AI_NAME = "PCOS Companion";
 export const OWNER_NAME = "Ankita and Saba (BITSoM MBA ’26)";
 
 export const WELCOME_MESSAGE = `
-Hey bestie 💗
+Hi there 💗
 
-I'm your PCOS Companion — a gentle, judgment-free space to help you understand PCOS, build tiny healthy habits, and feel a little more in control every day.
+I’m your PCOS Companion — a judgment-free place to learn about PCOS and build supportive habits. I share simple, trustworthy information to help you take small steps each day.
 
-I’m not a doctor, but I can break things down in simple, comforting ways using trusted PCOS-friendly information.
+You can ask things like:
+• “Explain PCOS simply”
+• “Easy PCOS-friendly meal?”
+• “Light workout ideas?”
+• “Tips for stress or sleep?”
 
-Whenever you're ready, you can ask me things like:
-
-• “Explain PCOS to me like I’m 15”
-• “Give me a simple PCOS-friendly breakfast”
-• “Help me with stress or sleep”
-• “Make me a gentle 10-minute workout”
-
-No pressure. No overwhelm.  
-Just soft support, step by step 🌷
+I’m not a medical professional, but I’m here with reliable guidance 🌷
 `;
 
 export const CLEAR_CHAT_TEXT = "New PCOS chat";
