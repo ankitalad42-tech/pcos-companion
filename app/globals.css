@@ -4,11 +4,9 @@
 /* Dark mode variant */
 @custom-variant dark (&:is(.dark *));
 
-/* 
-=====================================================
-TAILWIND THEME WIRING — REQUIRED
-=====================================================
-*/
+/* ================================
+   TAILWIND THEME VARIABLE WIRING
+   ================================ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -16,8 +14,10 @@ TAILWIND THEME WIRING — REQUIRED
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-muted: var(--muted);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -25,124 +25,55 @@ TAILWIND THEME WIRING — REQUIRED
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
 
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* 
-=====================================================
-LIGHT THEME COLORS — UPDATED CLEANER PALETTE
-=====================================================
-*/
+/* ================================
+   LIGHT MODE — clean & soft
+   ================================ */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.8rem;
 
-  /* CLEAN SOFT BEIGE-WHITE BACKGROUND */
-  --background: #fffdf9;
+  /* cleaner white BG */
+  --background: #ffffff;
   --foreground: #2a1d25;
 
   --card: #ffffff;
   --card-foreground: #2a1d25;
 
-  --popover: #ffffff;
-  --popover-foreground: #2a1d25;
-
+  /* soft pastel */
   --primary: #ff76a6;
-  --primary-foreground: #ffffff;
+  --primary-foreground: white;
 
-  --secondary: #f4e1ff;
+  --secondary: #ffe6f3;
   --secondary-foreground: #2a1d25;
 
-  --muted: #ffe6f0;
+  --muted: #fce8f3;
   --muted-foreground: #6f5b6a;
 
-  --accent: #f3ddff;
+  --accent: #f7ddff;
   --accent-foreground: #2a1d25;
 
   --border: #ffd4e2;
-  --input: #ffe4ef;
+  --input: #ffebf4;
   --ring: #ff9dc2;
-
-  --chart-1: #ff7bab;
-  --chart-2: #c08cff;
-  --chart-3: #ffb4d3;
-  --chart-4: #ffddf0;
-  --chart-5: #e2c9ff;
-
-  --sidebar: #fff6fa;
-  --sidebar-foreground: #2a1d25;
-  --sidebar-primary: #ff76a6;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ffeaf4;
-  --sidebar-accent-foreground: #2a1d25;
-  --sidebar-border: #ffd4e2;
-  --sidebar-ring: #ff9dc2;
 }
 
-/* 
-=====================================================
-DARK MODE — SAME AS BEFORE
-=====================================================
-*/
+/* ================================
+   DARK MODE
+   ================================ */
 .dark {
-  --background: #1f1118;
+  --background: #1a1115;
   --foreground: #fce6ee;
-
-  --card: #2b1821;
+  --card: #26141c;
   --card-foreground: #fce6ee;
-
-  --popover: #2b1821;
-  --popover-foreground: #fce6ee;
-
-  --primary: #ff9fca;
-  --primary-foreground: #2b1821;
-
-  --secondary: #4a2d52;
-  --secondary-foreground: #ffffff;
-
-  --muted: #4a2d52;
-  --muted-foreground: #d9b7c9;
-
-  --accent: #5e3d69;
-  --accent-foreground: #ffffff;
-
-  --border: #57384c;
-  --input: #6e4c63;
-  --ring: #ffbad9;
+  --muted: #3a2330;
+  --muted-foreground: #d7b0c5;
 }
 
-/* 
-=====================================================
-BASE LAYER — ENABLES TAILWIND BG-BACKGROUND
-=====================================================
-*/
+/* ================================
+   BASE LAYER
+   ================================ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -152,49 +83,62 @@ BASE LAYER — ENABLES TAILWIND BG-BACKGROUND
     @apply bg-background text-foreground font-sans;
   }
 
+  /* cute small link badges */
   a.single-char-link {
     @apply bg-card text-card-foreground px-2 py-1 rounded-full 
            border border-input transition-all duration-100
            hover:underline hover:scale-105;
   }
+
+  /* pink scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff9dc2;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ffe8f3;
+  }
 }
 
-/* 
-=====================================================
-🌸 ASSISTANT BUBBLE — FINAL CUTE DESIGN
-=====================================================
-*/
+/* ================================
+   ASSISTANT MESSAGE BUBBLE
+   ================================ */
 
 .assistant-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin: 14px 0;
+  gap: 10px;
+  margin: 16px 0;
 }
 
-/* Logo avatar style */
 .assistant-avatar-img {
   border-radius: 50%;
   width: 42px;
   height: 42px;
-  box-shadow: 0 3px 6px rgba(255, 150, 200, 0.35);
+  box-shadow: 0 3px 8px rgba(255, 150, 200, 0.3);
+  animation: floatAvatar 3s ease-in-out infinite;
 }
 
-/* Soft pastel bubble */
+@keyframes floatAvatar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
 .fancy-bubble {
-  background: linear-gradient(135deg, #fff2fa 0%, #ffe9f7 100%);
-  border-radius: 1.35rem;
-  padding: 1rem 1.25rem;
-  border: 1px solid #ffd3e6;
-  max-width: 85%;
+  background: linear-gradient(135deg, #ffeaf4 0%, #fbe9ff 100%);
+  border-radius: 1.25rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid #ffd1e8;
+  box-shadow: 0 4px 10px rgba(255, 150, 200, 0.18);
   position: relative;
-
-  /* Softer floating animation */
-  animation: softFloat 3s ease-in-out infinite, fadeIn 0.35s ease-out;
-  box-shadow: 0 6px 14px rgba(255, 180, 210, 0.28);
+  max-width: 85%;
+  animation: fadeIn 0.35s ease-out;
 }
 
-/* Bubble tail */
+/* little bubble tail */
 .bubble-tail {
   position: absolute;
   left: -7px;
@@ -202,35 +146,42 @@ BASE LAYER — ENABLES TAILWIND BG-BACKGROUND
   width: 14px;
   height: 14px;
   background: inherit;
-  border-left: 1px solid #ffd3e6;
-  border-bottom: 1px solid #ffd3e6;
+  border-left: 1px solid #ffd1e8;
+  border-bottom: 1px solid #ffd1e8;
   transform: rotate(45deg);
-  border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 3px;
 }
 
-/* Bubble text */
 .assistant-text {
   font-size: 1rem;
   line-height: 1.55;
-  color: var(--foreground);
   white-space: pre-line;
 }
 
-/* Floating softness */
-@keyframes softFloat {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
-  100% { transform: translateY(0px); }
+/* fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Fade in effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(3px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* typing dots */
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  margin-left: 5px;
+}
+.typing-dots div {
+  width: 6px;
+  height: 6px;
+  background: #ff76a6;
+  border-radius: 50%;
+  animation: blink 1.4s infinite;
+}
+.typing-dots div:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots div:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+ 100% { opacity: 0.2; transform: translateY(0); }
 }
