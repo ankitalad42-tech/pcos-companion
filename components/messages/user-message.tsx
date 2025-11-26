@@ -1,20 +1,13 @@
 import React from "react";
+import { UIMessage } from "ai";
 
-export function UserMessage({ content }: { content: string }) {
+export function UserMessage({ message }: { message: UIMessage }) {
   return (
     <div className="w-full flex justify-end my-2">
-      <div
-        className="
-          max-w-[80%]
-          bg-[#f1e8ff]
-          text-[#2a1d3a]
-          px-4 py-3
-          rounded-2xl
-          shadow-sm
-          border border-[#e2d4ff]
-        "
-      >
-        <p className="whitespace-pre-line leading-relaxed">{content}</p>
+      <div className="user-bubble">
+        {message.parts?.map((part, index) =>
+          part.type === "text" ? <p key={index}>{part.text}</p> : null
+        )}
       </div>
     </div>
   );
