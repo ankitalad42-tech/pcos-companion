@@ -1,21 +1,42 @@
-import { AIMessage } from "ai";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { UIMessage } from "ai";
 
-export function AssistantMessage({ content }: { content: string }) {
+export function AssistantMessage({
+  message,
+  status,
+  isLastMessage,
+  durations,
+  onDurationChange,
+}: {
+  message: UIMessage;
+  status?: string;
+  isLastMessage?: boolean;
+  durations?: Record<string, number>;
+  onDurationChange?: (key: string, duration: number) => void;
+}) {
+  // Track streaming time
+  const [startTime] = useState(Date.now());
+  const id = message.id;
+
+  useEffect(() => {
+    if (isLastMessage && status === "streaming") {
+      const interval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        onDurationChange?.(id, elapsed);
+      }, 200);
+
+      return () => clearInterval(interval);
+    }
+  }, [isLastMessage, status, startTime, id, onDurationChange]);
+
   return (
     <div className="w-full flex justify-start my-2">
-      <div
-        className="
-          max-w-[80%]
-          bg-[#ffe5ef]
-          text-[#3d1f2d]
-          px-4 py-3
-          rounded-2xl
-          shadow-sm
-          border border-[#ffcee0]
-        "
-      >
-        <p className="whitespace-pre-line leading-relaxed">{content}</p>
+      <div className="assistant-bubble">
+        {message.parts?.map((part, index) =>
+          part.type === "text" ? (
+            <p key={index}>{part.text}</p>
+          ) : null
+        )}
       </div>
     </div>
   );
