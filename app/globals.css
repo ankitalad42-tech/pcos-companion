@@ -2,60 +2,60 @@
 @import "tw-animate-css";
 
 /*
-  PCOS Companion Theme Colors
-  Pink + Lavender + Soft Peach
+  PCOS Companion — Pink + Lavender Theme
+  Fully compatible with Next.js 16 + Turbopack + Tailwind
 */
 
 :root {
   --radius: 0.625rem;
 
-  /* Main background + text */
+  /* Backgrounds + text */
   --background: #fff6fa;
   --foreground: #2a1d25;
 
-  /* Cards & chat bubbles */
+  /* Chat & general UI */
   --card: #ffffff;
   --card-foreground: #2a1d25;
 
   --popover: #ffffff;
   --popover-foreground: #2a1d25;
 
-  /* BRAND COLORS */
-  --primary: #ff76a6; /* PCOS pink */
-  --primary-foreground: white;
+  /* Brand Colors */
+  --primary: #ff76a6;              /* PCOS Pink */
+  --primary-foreground: #ffffff;
 
-  --secondary: #f4e1ff; /* soft lavender */
+  --secondary: #f4e1ff;            /* Soft Lavender */
   --secondary-foreground: #2a1d25;
 
-  --muted: #ffe6f0;
+  --muted: #ffe6f0;                /* Very light pink */
   --muted-foreground: #6f5b6a;
 
-  --accent: #f3ddff;
+  --accent: #f3ddff;               /* Light lavender */
   --accent-foreground: #2a1d25;
 
   --border: #ffd4e2;
   --input: #ffe4ef;
   --ring: #ff9dc2;
 
-  /* Sidebar (if used later) */
-  --sidebar: #fff6fa;
-  --sidebar-foreground: #2a1d25;
-  --sidebar-primary: #ff76a6;
-  --sidebar-primary-foreground: white;
-  --sidebar-accent: #ffeaf4;
-  --sidebar-accent-foreground: #2a1d25;
-  --sidebar-border: #ffd4e2;
-  --sidebar-ring: #ff9dc2;
-
-  /* Chart colors (unused but fine to keep) */
+  /* Optional charts (unused now but fine) */
   --chart-1: #ff7bab;
   --chart-2: #c08cff;
   --chart-3: #ffb4d3;
   --chart-4: #ffddf0;
   --chart-5: #e2c9ff;
+
+  /* Sidebar (if used later) */
+  --sidebar: #fff6fa;
+  --sidebar-foreground: #2a1d25;
+  --sidebar-primary: #ff76a6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffeaf4;
+  --sidebar-accent-foreground: #2a1d25;
+  --sidebar-border: #ffd4e2;
+  --sidebar-ring: #ff9dc2;
 }
 
-/* DARK MODE — good for accessibility */
+/* DARK MODE — accessible, clean, PCOS-themed */
 .dark {
   --background: #1f1118;
   --foreground: #fce6ee;
@@ -83,26 +83,45 @@
   --ring: #ffbad9;
 }
 
-/* Apply styles */
+/* Base application styling */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
   body {
     @apply bg-background text-foreground;
   }
 
-  /* Chat bubbles */
+  /* Assistant bubble — soft pink */
   .assistant-bubble {
-    @apply bg-muted text-foreground rounded-2xl px-4 py-3 shadow-sm;
+    background-color: var(--muted);
+    color: var(--foreground);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
   }
 
+  /* User bubble — soft lavender */
   .user-bubble {
-    @apply bg-secondary text-foreground rounded-2xl px-4 py-3 shadow;
+    background-color: var(--secondary);
+    color: var(--foreground);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2d4ff;
   }
 
+  /* Tag/badge links */
   .single-char-link {
-    @apply bg-card text-card-foreground px-2 py-1 rounded-full hover:underline hover:scale-105 transition-all duration-100 !text-foreground !no-underline border-input border;
+    background-color: var(--card);
+    color: var(--card-foreground);
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--input);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .single-char-link:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
   }
 }
