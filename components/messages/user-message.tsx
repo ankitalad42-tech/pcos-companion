@@ -1,19 +1,21 @@
-import { UIMessage } from "ai";
-import { Response } from "@/components/ai-elements/response";
+import React from "react";
 
-export function UserMessage({ message }: { message: UIMessage }) {
-    return (
-        <div className="whitespace-pre-wrap w-full flex justify-end">
-            <div className="max-w-lg w-fit px-4 py-3 rounded-[20px] bg-neutral-100">
-                <div className="text-sm">
-                    {message.parts.map((part, i) => {
-                        switch (part.type) {
-                            case "text":
-                                return <Response key={`${message.id}-${i}`}>{part.text}</Response>;
-                        }
-                    })}
-                </div>
-            </div>
-        </div>
-    )
+export function UserMessage({ content }: { content: string }) {
+  return (
+    <div className="w-full flex justify-end my-2">
+      <div
+        className="
+          max-w-[80%]
+          bg-[#f1e8ff]
+          text-[#2a1d3a]
+          px-4 py-3
+          rounded-2xl
+          shadow-sm
+          border border-[#e2d4ff]
+        "
+      >
+        <p className="whitespace-pre-line leading-relaxed">{content}</p>
+      </div>
+    </div>
+  );
 }
