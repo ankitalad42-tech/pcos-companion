@@ -30,12 +30,23 @@ function getDateAndTime(): string {
 
 export const DATE_AND_TIME = getDateAndTime();
 
-export const AI_NAME = "Pcos Companion";
-export const OWNER_NAME = "Pcos Companion";
+export const AI_NAME = "PCOS Companion";
+export const OWNER_NAME = "Ankita Lad (BITSoM MBA ’25)";
 
-export const WELCOME_MESSAGE = `Hello! I'm ${Pcos Companion}, an AI assistant created by ${Ankita and Saba}.`
+export const WELCOME_MESSAGE = `Hi, I’m ${Pcos_Companion} — an educational assistant for people living with PCOS.
 
-export const CLEAR_CHAT_TEXT = "New";
+I can:
+- explain PCOS in simple language
+- help you build gentle weekly movement plans
+- suggest PCOS-friendly food patterns
+- talk about sleep, stress and emotional health
+- summarise reliable guidelines and patient information
+
+I **cannot** diagnose you, interpret lab tests, or replace your doctor. 
+Always talk to a qualified health professional before changing medication, diet, or exercise.
+`;
+
+export const CLEAR_CHAT_TEXT = "New PCOS chat";
 
 export const MODERATION_DENIAL_MESSAGE_SEXUAL = "I can't discuss explicit sexual content. Please ask something else.";
 export const MODERATION_DENIAL_MESSAGE_SEXUAL_MINORS = "I can't discuss content involving minors in a sexual context. Please ask something else.";
@@ -51,6 +62,41 @@ export const MODERATION_DENIAL_MESSAGE_SELF_HARM_INSTRUCTIONS = "I can't provide
 export const MODERATION_DENIAL_MESSAGE_VIOLENCE = "I can't discuss violent content. Please ask something else.";
 export const MODERATION_DENIAL_MESSAGE_VIOLENCE_GRAPHIC = "I can't discuss graphic violent content. Please ask something else.";
 export const MODERATION_DENIAL_MESSAGE_DEFAULT = "Your message violates our guidelines. I can't answer that.";
+export const MODERATION_DENIAL_MESSAGE_SEXUAL = `
+I’m not able to engage in explicit sexual content.
+If you have concerns about sexual health or intimacy with PCOS,
+please speak with a gynecologist, endocrinologist, or therapist.
+`;
+
+export const MODERATION_DENIAL_MESSAGE_HARASSMENT = `
+I’m here to be a supportive, non-judgmental space.
+I can’t respond to abusive or harassing language. 
+Let’s keep this focused on your health and wellbeing.
+`;
+
+export const MODERATION_DENIAL_MESSAGE_HATE = `
+I can’t participate in hateful or discriminatory content.
+I’m designed to support people with PCOS respectfully, regardless of background.
+`;
+
+export const MODERATION_DENIAL_MESSAGE_VIOLENCE = `
+I can’t assist with violent content.
+If you’re feeling unsafe, please contact local emergency services or a trusted person.
+`;
+
+export const MODERATION_DENIAL_MESSAGE_SELF_HARM = `
+I’m really glad you reached out. I can’t help with self-harm instructions,
+but you deserve real support from a human right now.
+
+If you are in immediate danger, please contact local emergency services.
+If possible, reach out to a trusted friend, family member, or mental health professional.
+`;
+
+export const MODERATION_DENIAL_MESSAGE_ILLEGAL = `
+I’m not able to help with illegal activities.
+I can provide general educational information about PCOS, lifestyle, and wellbeing instead.
+`;
+
 
 export const PINECONE_TOP_K = 40;
 export const PINECONE_INDEX_NAME = "pcos-companion";
