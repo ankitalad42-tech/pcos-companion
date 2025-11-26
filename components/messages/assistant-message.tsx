@@ -21,9 +21,10 @@ export function AssistantMessage({
   // Track streaming duration
   useEffect(() => {
     if (isLastMessage && status === "streaming") {
-      const interval = setInterval(() => {
-        onDurationChange?.(id, Date.now() - startTime);
-      }, 200);
+      const interval = setInterval(
+        () => onDurationChange?.(id, Date.now() - startTime),
+        200
+      );
       return () => clearInterval(interval);
     }
   }, [isLastMessage, status, startTime, id, onDurationChange]);
@@ -31,28 +32,22 @@ export function AssistantMessage({
   return (
     <div className="assistant-wrapper">
       {/* Avatar */}
-      <div className="assistant-avatar">
-        <Image
-          src="/logo.png"
-          alt="PCOS Companion"
-          width={42}
-          height={42}
-          className="assistant-avatar-img"
-        />
-      </div>
+      <Image
+        src="/logo.png"
+        width={40}
+        height={40}
+        alt="logo"
+        className="assistant-avatar-img"
+      />
 
-      {/* Bubble */}
-      <div className="assistant-bubble fancy-bubble animate-fade-in">
-        {message.parts?.map((part, index) =>
-          part.type === "text" ? (
-            <p key={index} className="assistant-text">
-              {part.text}
-            </p>
-          ) : null
-        )}
+      <div className="fancy-bubble">
+        <div className="assistant-text">
+          {message.parts?.map((p, i) =>
+            p.type === "text" ? <p key={i}>{p.text}</p> : null
+          )}
+        </div>
 
-        {/* Bubble tail */}
-        <div className="bubble-tail" />
+        <div className="bubble-tail"></div>
       </div>
     </div>
   );
