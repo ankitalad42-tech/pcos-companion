@@ -3,7 +3,7 @@
 
 /*
   PCOS Companion — Pink + Lavender Theme
-  Fully compatible with Next.js 16 + Turbopack + Tailwind
+  Pure CSS version (no Tailwind custom utilities)
 */
 
 :root {
@@ -21,30 +21,28 @@
   --popover-foreground: #2a1d25;
 
   /* Brand Colors */
-  --primary: #ff76a6;              /* PCOS Pink */
+  --primary: #ff76a6;
   --primary-foreground: #ffffff;
 
-  --secondary: #f4e1ff;            /* Soft Lavender */
+  --secondary: #f4e1ff;
   --secondary-foreground: #2a1d25;
 
-  --muted: #ffe6f0;                /* Very light pink */
+  --muted: #ffe6f0;
   --muted-foreground: #6f5b6a;
 
-  --accent: #f3ddff;               /* Light lavender */
+  --accent: #f3ddff;
   --accent-foreground: #2a1d25;
 
   --border: #ffd4e2;
   --input: #ffe4ef;
   --ring: #ff9dc2;
 
-  /* Optional charts (unused now but fine) */
   --chart-1: #ff7bab;
   --chart-2: #c08cff;
   --chart-3: #ffb4d3;
   --chart-4: #ffddf0;
   --chart-5: #e2c9ff;
 
-  /* Sidebar (if used later) */
   --sidebar: #fff6fa;
   --sidebar-foreground: #2a1d25;
   --sidebar-primary: #ff76a6;
@@ -55,7 +53,7 @@
   --sidebar-ring: #ff9dc2;
 }
 
-/* DARK MODE — accessible, clean, PCOS-themed */
+/* DARK MODE */
 .dark {
   --background: #1f1118;
   --foreground: #fce6ee;
@@ -83,33 +81,35 @@
   --ring: #ffbad9;
 }
 
-/* Base application styling */
+/* Base styles — NO Tailwind utilities */
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), sans-serif;
   }
 
-  /* Assistant bubble — soft pink */
+  /* ASSISTANT BUBBLE */
   .assistant-bubble {
     background-color: var(--muted);
     color: var(--foreground);
     border-radius: 1rem;
     padding: 0.75rem 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
-  /* User bubble — soft lavender */
+  /* USER BUBBLE */
   .user-bubble {
     background-color: var(--secondary);
     color: var(--foreground);
     border-radius: 1rem;
     padding: 0.75rem 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     border: 1px solid #e2d4ff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
-  /* Tag/badge links */
+  /* Link badge */
   .single-char-link {
     background-color: var(--card);
     color: var(--card-foreground);
