@@ -16,27 +16,27 @@ export function MessageWall({
 }) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
-    <div className="relative max-w-3xl w-full mx-auto pl-2">
-      <div className="relative flex flex-col gap-4">
-        {messages.map((message, index) => {
-          const isLast = index === messages.length - 1;
+    <div className="w-full px-5">
+      <div className="flex flex-col gap-4 max-w-2xl">
+
+        {messages.map((m, i) => {
+          const isLast = i === messages.length - 1;
 
           return (
-            <div key={message.id} className="w-full">
-              {message.role === "user" ? (
-                <UserMessage message={message} />
+            <div key={m.id}>
+              {/* Divider */}
+              {i !== 0 && <div className="message-divider"></div>}
+
+              {m.role === "user" ? (
+                <UserMessage message={m} />
               ) : (
                 <AssistantMessage
-                  message={message}
+                  message={m}
                   status={status}
                   isLastMessage={isLast}
                   durations={durations}
@@ -46,6 +46,13 @@ export function MessageWall({
             </div>
           );
         })}
+
+        {/* Typing animation */}
+        {status === "streaming" && (
+          <div className="typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+        )}
 
         <div ref={messagesEndRef} />
       </div>
