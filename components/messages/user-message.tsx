@@ -8,6 +8,21 @@ export function UserMessage({
   message: UIMessage;
   showTimestamp?: boolean;
 }) {
+  // Safely derive timestamp without TypeScript errors
+  const createdAtRaw = (message as any)?.createdAt as
+    | string
+    | number
+    | Date
+    | undefined;
+
+  const timestamp = new Date(createdAtRaw || Date.now()).toLocaleTimeString(
+    [],
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+    }
+  );
+
   return (
     <div className="w-full flex justify-end pr-2 my-2">
       <div className="user-bubble animate-pop">
@@ -19,10 +34,7 @@ export function UserMessage({
       {/* OPTIONAL TIMESTAMP */}
       {showTimestamp && (
         <div className="text-xs text-pink-600 mt-auto ml-2 opacity-70">
-          {new Date(message.createdAt || Date.now()).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
+          {timestamp}
         </div>
       )}
     </div>
