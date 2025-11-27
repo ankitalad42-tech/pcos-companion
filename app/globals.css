@@ -210,3 +210,116 @@ header h1 {
     transform: translateY(0);
   }
 }
+
+/* USER MESSAGE WRAPPER — aligns bubble right */
+.user-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+/* USER BUBBLE — deep PCOS pink */
+.user-bubble {
+  background: #ff76a6; /* deep PCOS pink */
+  color: white;
+  padding: 12px 16px;
+  max-width: 70%;
+  border-radius: 20px;
+  line-height: 1.5;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(255, 118, 166, 0.28);
+  backdrop-filter: blur(1.5px);
+  transform-origin: bottom right;
+}
+
+/* USER TEXT */
+.user-text {
+  white-space: pre-line;
+}
+
+/* TIMESTAMP */
+.user-timestamp {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: right;
+}
+
+/* FADE + POP ANIMATION */
+.animate-user-fade {
+  animation: fadeUser 0.25s ease-out;
+}
+
+.animate-user-pop {
+  animation: popUser 0.22s ease-out;
+}
+
+@keyframes fadeUser {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popUser {
+  0% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* TYPING DOTS */
+.typing-dots {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+  gap: 4px;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: #ff9dc2;
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink 1.4s infinite both;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+  100% { opacity: 0.2; transform: translateY(0); }
+}
+
+/* RIPPLES ON TAP */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect:active::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(2.6);
+    opacity: 0;
+  }
+}
+
