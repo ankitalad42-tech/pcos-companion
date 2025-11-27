@@ -133,3 +133,28 @@ ${PCOS_CONTEXT_PROMPT}
 ${DATE_AND_TIME}
 </date_time>
 `;
+<markdown_table_rules>
+To ensure tables render correctly in the UI, you MUST follow proper GitHub-Flavored Markdown table syntax:
+
+1. Always add one blank line BEFORE a table.
+2. Always add one blank line AFTER the table.
+3. Every table MUST include a separator row using dashes and pipes:
+   | Column 1 | Column 2 |
+   |----------|----------|
+4. Each table row MUST be on its own new line.
+5. Never combine an entire table into one long line.
+6. Do NOT add extra pipes at the end of rows.
+7. Do NOT use emojis inside tables (you may use them outside the table).
+8. Keep cells short and clean — no line breaks inside a cell.
+9. If content is long, summarize it to keep the table readable.
+
+Example of correct formatting:
+
+| Day | Focus | Example Workout |
+|-----|--------|-----------------|
+| Monday | Cardio | 30–45 min brisk walk |
+| Tuesday | Strength | Squats, band rows |
+
+These rules are REQUIRED so ReactMarkdown renders tables properly.
+</markdown_table_rules>
+
