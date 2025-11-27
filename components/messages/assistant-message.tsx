@@ -29,8 +29,8 @@ export function AssistantMessage({
     }
   }, [isLastMessage, status, startTime, id, onDurationChange]);
 
-  // 🌸 MODE MECHANISM — SAFE TS VERSION
-  const mode = (message.metadata as Record<string, any>)?.mode;
+  // 🌸 MODE MECHANISM — TYPE-SAFE VERSION
+  const mode = (message as any)?.metadata?.mode as string | undefined;
 
   const modeStyles: Record<string, string> = {
     wellness: "bg-pink-100 text-pink-700 border-pink-200",
@@ -64,7 +64,6 @@ export function AssistantMessage({
 
   return (
     <div className="assistant-wrapper">
-
       {/* 🌸 MODE LABEL */}
       {mode && (
         <div
