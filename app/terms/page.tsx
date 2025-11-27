@@ -1,6 +1,5 @@
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
-import { OWNER_NAME } from "@/config";
 
 export default function Terms() {
     return (
@@ -13,193 +12,132 @@ export default function Terms() {
                     <ArrowLeftIcon className="w-4 h-4" />
                     Back to Chatbot
                 </Link>
-                <h1 className="text-3xl font-bold">MyAI3</h1>
+
+                <h1 className="text-3xl font-bold">PCOS Companion</h1>
                 <h2 className="text-2xl font-semibold">Terms of Use / Disclaimer</h2>
 
                 <p className="text-gray-700">
-                    The following terms of use govern access to and use of the MyAI3
-                    Assistant ("AI Chatbot"), an artificial intelligence tool provided by
-                    {OWNER_NAME} ("I", "me", or "myself"). By engaging with the AI
-                    Chatbot, you agree to these terms. If you do not agree, you may not
-                    use the AI Chatbot.
+                    These Terms of Use govern your access to and use of PCOS Companion, an 
+                    AI-powered educational assistant created by Ankita and Saba (BITSoM MBA ’26) 
+                    (“we”, “our”, “us”). By using this assistant, you agree to these terms. 
+                    If you do not agree, do not use the service.
                 </p>
 
+                {/* 1. Purpose and Nature */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">General Information</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Provider and Purpose:</span> The
-                            AI Chatbot is a tool developed and maintained by {OWNER_NAME}. It
-                            is intended solely to assist users with questions and coursework
-                            related to courses taught by {OWNER_NAME}. The AI Chatbot is not
-                            affiliated with, endorsed by, or operated by the course provider.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Third-Party Involvement:</span>{" "}
-                            The AI Chatbot utilizes multiple third-party platforms and
-                            vendors, some of which operate outside the United States. Your
-                            inputs may be transmitted, processed, and stored by these
-                            third-party systems. As such, confidentiality, security, and privacy
-                            cannot be guaranteed, and data transmission may be inherently
-                            insecure and subject to interception.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Guarantee of Accuracy:</span>{" "}
-                            The AI Chatbot is designed to provide helpful and relevant
-                            responses but may deliver inaccurate, incomplete, or outdated
-                            information. Users are strongly encouraged to independently verify
-                            any information before relying on it for decisions or actions.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Liability</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Use at Your Own Risk:</span> The
-                            AI Chatbot is provided on an "as-is" and "as-available" basis. To
-                            the fullest extent permitted by law:
-                            <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                                <li>
-                                    {OWNER_NAME} disclaims all warranties, express or implied,
-                                    including but not limited to warranties of merchantability,
-                                    fitness for a particular purpose, and non-infringement.
-                                </li>
-                                <li>
-                                    {OWNER_NAME} is not liable for any errors, inaccuracies, or
-                                    omissions in the information provided by the AI Chatbot.
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">
-                                No Responsibility for Damages:
-                            </span>{" "}
-                            Under no circumstances shall {OWNER_NAME}, his collaborators,
-                            partners, affiliated entities, or representatives be liable for
-                            any direct, indirect, incidental, consequential, special, or
-                            punitive damages arising out of or in connection with the use of
-                            the AI Chatbot.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">
-                                Modification or Discontinuation:
-                            </span>{" "}
-                            I reserve the right to modify, suspend, or discontinue the AI
-                            Chatbot's functionalities at any time without notice.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Future Fees:</span> While the AI
-                            Chatbot is currently provided free of charge, I reserve the right
-                            to implement a fee for its use at any time.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">User Responsibilities</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Eligibility:</span> Use of the AI
-                            Chatbot is restricted to individuals aged 18 or older.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Prohibited Conduct:</span> By
-                            using the AI Chatbot, you agree not to:
-                            <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                                <li>Post or transmit content that is defamatory, offensive, intimidating, illegal, racist, discriminatory, obscene, or otherwise inappropriate.</li>
-                                <li>Use the AI Chatbot to engage in unlawful or unethical activities.</li>
-                                <li>Attempt to compromise the security or functionality of the AI Chatbot</li>
-                                <li>Copy, distribute, modify, reverse engineer, decompile, or extract the source code of the AI Chatbot without explicit written consent.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Data Privacy and Security</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Privacy Guarantee:</span> The
-                            AI Chatbot does not guarantee privacy, confidentiality, or
-                            security of the information you provide. Conversations may be
-                            reviewed by {OWNER_NAME}, collaborators, partners, or affiliated
-                            entities for purposes such as improving the AI Chatbot, developing
-                            course materials, and conducting research.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Public Information:</span> Any
-                            information you provide through the AI Chatbot is treated as
-                            public.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Data Transmission:</span> Inputs
-                            may be transmitted to and processed by third-party services.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Ownership of Content and Commercial Use</h3>
-                    <ol className="list-decimal list-inside space-y-3">
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Surrender of Rights:</span> By
-                            using the AI Chatbot, you irrevocably assign and surrender all rights,
-                            title, interest, and intellectual property rights in any content, inputs
-                            you provide, and outputs generated by the AI Chatbot to {OWNER_NAME}.
-                            This includes, but is not limited to, text, questions, and conversations.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">Commercial and Research Use:</span>{" "}
-                            {OWNER_NAME} reserves the right to use any input provided by users and
-                            any output generated by the AI Chatbot for commercial purposes, research,
-                            or other activities without compensation or notification to users.
-                        </li>
-                        <li className="text-gray-700">
-                            <span className="font-semibold">No Claim to Gains or Profits:</span>{" "}
-                            Users agree that they have no rights, claims, or entitlement to
-                            any gains, profits, or benefits derived from the use or
-                            exploitation of the content provided to the AI Chatbot.
-                        </li>
-                    </ol>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Indemnification</h3>
+                    <h3 className="text-xl font-semibold">1. Purpose and Nature of the Service</h3>
                     <p className="text-gray-700">
-                        By using the AI Chatbot, you agree to indemnify and hold harmless
-                        {OWNER_NAME}, his collaborators, partners, affiliated entities, and
-                        representatives from any claims, damages, losses, or liabilities
-                        arising out of your use of the AI Chatbot or violation of these
-                        terms.
+                        PCOS Companion is an educational and lifestyle-support AI designed to help 
+                        users better understand PCOS-related concepts, general wellness principles, 
+                        behavioural strategies, and everyday routines.
+                    </p>
+                    <p className="text-gray-700">
+                        It is not a medical service and does not provide diagnosis, treatment, or medical advice.
+                        The assistant is not affiliated with any medical institution, clinic, or healthcare provider.
                     </p>
                 </div>
 
+                {/* 2. Not Medical Advice */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Governing Law and Jurisdiction</h3>
+                    <h3 className="text-xl font-semibold">2. Not Medical Advice</h3>
                     <p className="text-gray-700">
-                        These terms are governed by the laws of the State of North Carolina,
-                        United States. Additional jurisdictions may apply for users outside
-                        the United States, subject to applicable local laws. In case of
-                        conflicts, the laws of North Carolina shall prevail to the extent
-                        permissible. Any disputes arising under or in connection with these
-                        terms shall be subject to the exclusive jurisdiction of the courts
-                        located in North Carolina.
+                        PCOS Companion is not a doctor, healthcare professional, or licensed provider.
+                        Therefore, it cannot diagnose conditions, interpret lab results, recommend or adjust 
+                        medication/supplements, or replace professional medical consultation.
+                    </p>
+                    <p className="text-gray-700">
+                        All information is general and educational. Always consult a qualified medical 
+                        professional before acting on any health-related information.
                     </p>
                 </div>
 
+                {/* 3. Accuracy */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Acceptance of Terms</h3>
+                    <h3 className="text-xl font-semibold">3. Accuracy and Limitations</h3>
                     <p className="text-gray-700">
-                        By using the AI Chatbot, you confirm that you have read, understood,
-                        and agreed to these Terms of Use and Disclaimer. If you do not
-                        agree with any part of these terms, you may not use the AI Chatbot.
+                        The assistant may sometimes generate incomplete, incorrect, or outdated information.
+                        We make no promises about accuracy, reliability, completeness, or suitability for 
+                        any particular purpose. Use the service at your own discretion and risk.
                     </p>
                 </div>
 
+                {/* 4. User Eligibility */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">4. User Eligibility & Responsibilities</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                        <li>You are at least 18 years old.</li>
+                        <li>You will not rely on the assistant for medical, legal, financial, or emergency decisions.</li>
+                        <li>You will not input harmful, abusive, or illegal content.</li>
+                        <li>You will not attempt to reverse engineer, disrupt, or misuse the service.</li>
+                    </ul>
+                </div>
+
+                {/* 5. Data Privacy */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">5. Data, Privacy, and Storage</h3>
+                    <p className="text-gray-700">
+                        PCOS Companion uses third-party AI platforms to generate responses. As a result:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Your inputs may be transmitted to external servers.</li>
+                        <li>Privacy or confidentiality cannot be guaranteed.</li>
+                        <li>Do not share sensitive personal information.</li>
+                        <li>Your conversations may be reviewed to improve the service.</li>
+                    </ul>
+                </div>
+
+                {/* 6. Ownership */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">6. Ownership of Inputs and Outputs</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Your inputs and generated outputs may be stored or analyzed to improve the product.</li>
+                        <li>You waive any intellectual property claims over content you provide or receive.</li>
+                        <li>We may use anonymized content for research or product enhancement.</li>
+                        <li>You are responsible for ensuring your inputs do not violate IP rights.</li>
+                    </ul>
+                </div>
+
+                {/* 7. Limitation of Liability */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">7. Limitation of Liability</h3>
+                    <p className="text-gray-700">
+                        The service is provided “as is” and “as available.” We disclaim all warranties, including 
+                        fitness for a particular purpose. We are not liable for any damages—including direct, 
+                        indirect, incidental, or consequential losses—related to your use of the assistant or 
+                        decisions made based on AI-generated content.
+                    </p>
+                </div>
+
+                {/* 8. Modifications */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">8. Service Modifications</h3>
+                    <p className="text-gray-700">
+                        We may modify, suspend, or discontinue the assistant at any time without notice. 
+                        We may also introduce paid plans or usage limits in the future.
+                    </p>
+                </div>
+
+                {/* 9. Governing Law */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">9. Governing Law</h3>
+                    <p className="text-gray-700">
+                        These terms are governed by the laws of India. Any disputes arising from this service 
+                        will fall under the jurisdiction of the courts located in Mumbai, Maharashtra.
+                    </p>
+                </div>
+
+                {/* 10. Acceptance */}
+                <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">10. Acceptance</h3>
+                    <p className="text-gray-700">
+                        By continuing to use PCOS Companion, you acknowledge that you have read and understood 
+                        the Terms of Use and agree to all conditions outlined above.
+                    </p>
+                </div>
+
+                {/* Timestamp */}
                 <div className="mt-8 text-sm text-gray-600">
-                    <p>Last Updated: November 17, 2025</p>
+                    <p>Last Updated: November 2025</p>
                 </div>
             </div>
         </div>
