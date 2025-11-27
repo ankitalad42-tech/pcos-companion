@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { UIMessage } from "ai";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";   // ⭐ ADDED FOR TABLE FIX
 
 export function AssistantMessage({
   message,
@@ -90,8 +91,11 @@ export function AssistantMessage({
         <div className="assistant-text markdown-content">
           {message.parts?.map((p, i) =>
             p.type === "text" ? (
-              // ⭐ ADDED className="markdown-table"
-              <ReactMarkdown key={i} className="markdown-table">
+              <ReactMarkdown
+                key={i}
+                remarkPlugins={[remarkGfm]}   // ⭐ TABLES NOW WORK
+                className="markdown-table"
+              >
                 {p.text}
               </ReactMarkdown>
             ) : null
