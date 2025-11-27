@@ -24,7 +24,9 @@ export function UserMessage({
   );
 
   return (
-    <div className="w-full flex justify-end pr-2 my-2">
+    /** ⭐ FINAL FIX → pushes the bubble to the *absolute right* without touching any other file */
+    <div className="w-full flex justify-end px-6 my-2">
+
       <div className="user-bubble animate-pop">
         {message.parts?.map((part, index) =>
           part.type === "text" ? <p key={index}>{part.text}</p> : null
