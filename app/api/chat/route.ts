@@ -18,7 +18,7 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();
 
-  // ⭐ Extract latest user message safely
+  // ⭐ Detect latest user message
   const latestUserMessage = messages.filter(m => m.role === "user").pop();
 
   if (latestUserMessage) {
@@ -27,24 +27,25 @@ export async function POST(req: Request) {
       .map(p => ("text" in p ? p.text : ""))
       .join("");
 
+    // Moderation block unchanged
     if (textParts) {
       const moderationResult = await isContentFlagged(textParts);
 
       if (moderationResult.flagged) {
         const stream = createUIMessageStream({
           execute({ writer }) {
-            const textId = "moderation-denial-text";
+            const id = "moderation-denial";
 
             writer.write({ type: "start" });
-            writer.write({ type: "text-start", id: textId });
+            writer.write({ type: "text-start", id });
             writer.write({
               type: "text-delta",
-              id: textId,
+              id,
               delta:
                 moderationResult.denialMessage ||
-                "Your message violates our guidelines. I can't answer that.",
+                "Your message violates our guidelines.",
             });
-            writer.write({ type: "text-end", id: textId });
+            writer.write({ type: "text-end", id });
             writer.write({ type: "finish" });
           },
         });
@@ -54,15 +55,12 @@ export async function POST(req: Request) {
     }
   }
 
-  // ⭐ MAIN LLM CALL
+  // ⭐ MAIN AI CALL
   const result = streamText({
     model: MODEL,
     system: SYSTEM_PROMPT,
     messages: convertToModelMessages(messages),
-    tools: {
-      webSearch,
-      vectorDatabaseSearch,
-    },
+    tools: { webSearch, vectorDatabaseSearch },
     stopWhen: stepCountIs(10),
     providerOptions: {
       openai: {
@@ -73,26 +71,24 @@ export async function POST(req: Request) {
     },
   });
 
-  // ⭐ NEW: SAFE MODE-INJECTION WRAPPER
+  // ⭐ FIX: Convert to async iterable safely
+  const asyncStream = result.toAIStream();
+
+  // ⭐ STREAM WRAPPER WITH MODE INJECTION
   const stream = createUIMessageStream({
     async execute({ writer }) {
-      // Start event
       writer.write({ type: "start" });
 
-      // Pipe from model
-      for await (const msg of result) {
-        // Detect assistant messages
+      for await (const msg of asyncStream) {
         if (msg.role === "assistant") {
           const lastUser = messages.filter(m => m.role === "user").pop();
-          const userMeta = (lastUser as any)?.metadata;
+          const mode = (lastUser as any)?.metadata?.mode;
 
-          if (userMeta?.mode) {
-            // ⭐ Inject mode metadata
-            msg.metadata = { mode: userMeta.mode };
+          if (mode) {
+            msg.metadata = { mode };
           }
         }
 
-        // Forward message to UI
         writer.write(msg);
       }
 
