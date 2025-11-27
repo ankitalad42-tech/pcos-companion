@@ -22,15 +22,14 @@ export function MessageWall({
 
   return (
     <div className="w-full px-5">
-      {/* ⭐ FIX: Add w-full so messages can split left + right */}
-      <div className="flex flex-col gap-4 max-w-2xl w-full">
+      {/* ⭐ FIX: Let the message container stretch full width */}
+      <div className="flex flex-col gap-4 w-full self-start">
 
         {messages.map((m, i) => {
           const isLast = i === messages.length - 1;
 
           return (
-            <div key={m.id} className="w-full">
-              {/* Divider */}
+            <div key={m.id}>
               {i !== 0 && <div className="message-divider"></div>}
 
               {m.role === "user" ? (
@@ -48,7 +47,6 @@ export function MessageWall({
           );
         })}
 
-        {/* Typing animation */}
         {status === "streaming" && (
           <div className="typing-dots">
             <span></span><span></span><span></span>
