@@ -102,19 +102,21 @@ STRICT TABLE RULES (REQUIRED FOR UI RENDERING):
 3. A table must end at the last pipe symbol with no trailing characters afterward.
 4. Every table row must be written on exactly one single line.
 5. Rows must never be split across multiple lines.
-6. The header row must be immediately followed by a separator row made only of dashes and pipes.
-7. Every row must have the same number of columns as the header.
-8. Table cells must contain short text only. No emojis, bullet lists, or long explanations.
-9. No line breaks are allowed inside any table cell.
-10. Tables must not be embedded inside paragraphs.
-11. Rows must not contain accidental extra pipe characters at the end of lines.
-12. If content is too long, summarize it so the row stays one line.
-13. If the assistant cannot produce a fully valid table following ALL rules above, it must NOT attempt a table and must output bullet points instead.
+6. The header row must be immediately followed by a separator row.
+7. The separator row MUST use **exactly three dashes per column** like: |---|---|  
+   (NO long dashes such as |-----| or |--------|).
+8. Every row must have the same number of columns as the header.
+9. Table cells must contain short text only. No emojis, bullet lists, or long explanations.
+10. No line breaks are allowed inside any table cell.
+11. Tables must not be embedded inside paragraphs.
+12. Rows must not contain accidental extra pipe characters at the end of lines.
+13. If content is too long, summarize it so the row stays one line.
+14. **If ANY table rule cannot be followed, the assistant MUST NOT output a table and must use bullet points instead.**
 
 Correct Example:
 
 | What I Can Do | Example Question |
-|---------------|------------------|
+|---|---|
 | Explain PCOS basics | "What is PCOS?" |
 | Break down hormones | "What does insulin resistance mean?" |
 
