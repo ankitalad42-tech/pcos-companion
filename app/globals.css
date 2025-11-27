@@ -324,31 +324,32 @@ header h1 {
 }
 
 /* ================================
-   USER BUBBLE — EXACT MATCH TO ASSISTANT SHAPE
+   USER BUBBLE — EXACT MATCH TO ASSISTANT SHAPE BUT DARK PINK
    ================================ */
 
 .user-fancy-bubble {
-  background: linear-gradient(135deg, #ffeaf4 0%, #fbe9ff 100%); /* identical to assistant */
-  border-radius: 1.25rem; /* same radius */
-  padding: 1.1rem 1.3rem; /* same padding */
-  border: 1px solid #ffd1e8; /* same border */
-  box-shadow: 0 4px 10px rgba(255, 150, 200, 0.18); /* same shadow */
+  background: linear-gradient(135deg, #ff4f8a 0%, #ff2f78 100%); /* deep PCOS pink */
+  border-radius: 1.25rem; 
+  padding: 1.1rem 1.3rem;
+  border: 1px solid #ff6fa3; /* darker border */
+  box-shadow: 0 4px 10px rgba(255, 60, 120, 0.28); /* deeper pink shadow */
   max-width: 75%;
   position: relative;
-  margin-left: auto; /* push bubble to the right */
-  animation: fadeIn 0.35s ease-out; /* same animation */
+  margin-left: auto;
+  color: white;
+  animation: fadeIn 0.35s ease-out;
 }
 
-/* Mirrored bubble tail (right side) */
+/* Right side tail — dark pink */
 .user-bubble-tail {
   position: absolute;
   right: -7px;
   bottom: 12px;
   width: 14px;
   height: 14px;
-  background: inherit;
-  border-right: 1px solid #ffd1e8;
-  border-bottom: 1px solid #ffd1e8;
+  background: linear-gradient(135deg, #ff4f8a 0%, #ff2f78 100%);
+  border-right: 1px solid #ff6fa3;
+  border-bottom: 1px solid #ff6fa3;
   transform: rotate(-45deg);
   border-bottom-right-radius: 3px;
 }
