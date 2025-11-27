@@ -159,6 +159,42 @@
 }
 
 /* ================================
+   MARKDOWN TABLE FIX (FINAL VERSION)
+   ================================ */
+
+.assistant-text table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden; /* keeps rounded corners */
+  white-space: normal !important; /* FIX TABLE BREAKING */
+}
+
+.assistant-text thead {
+  background: #ffeaf4;
+}
+
+.assistant-text th,
+.assistant-text td {
+  border: 1px solid #ffd1e8;
+  padding: 8px 10px;
+  text-align: left;
+  white-space: normal !important; /* FIX for long text in cells */
+}
+
+.assistant-text th {
+  font-weight: 600;
+  background: #ffecf6;
+}
+
+.assistant-text tr:nth-child(even) td {
+  background: #fff7fc;
+}
+
+/* ================================
    MARKDOWN TABLE FIX (DO NOT REMOVE pre-line)
    ================================ */
 
