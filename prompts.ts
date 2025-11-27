@@ -132,7 +132,7 @@ ${PCOS_CONTEXT_PROMPT}
 <date_time>
 ${DATE_AND_TIME}
 </date_time>
-`;
+
 <markdown_table_rules>
 To ensure tables render correctly in the UI, you MUST follow proper GitHub-Flavored Markdown table syntax:
 
@@ -157,4 +157,4 @@ Example of correct formatting:
 
 These rules are REQUIRED so ReactMarkdown renders tables properly.
 </markdown_table_rules>
-
+`;
