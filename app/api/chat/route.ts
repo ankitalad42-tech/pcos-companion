@@ -34,14 +34,16 @@ export async function POST(req: Request) {
             .map(part => 'text' in part ? part.text : '')
             .join('');
 
-        // ⭐ NEW — detect the user's mode
+        // ⭐ NEW — detect mode & attach to metadata
         const detectedMode = detectMode(textParts);
-
-        // ⭐ NEW — attach mode to the *user* message metadata (so it flows forward)
         if (detectedMode) {
-            latestUserMessage.metadata = { ...(latestUserMessage.metadata || {}), mode: detectedMode };
+            latestUserMessage.metadata = {
+                ...(latestUserMessage.metadata || {}),
+                mode: detectedMode
+            };
         }
 
+        // existing moderation logic
         if (textParts) {
             const moderationResult = await isContentFlagged(textParts);
 
@@ -62,15 +64,26 @@ export async function POST(req: Request) {
                     },
                 });
 
-                return createUIMessageStreamResponse({ stream });
+                    return createUIMessageStreamResponse({ stream });
             }
         }
     }
 
+    // ⭐ NEW — Pass mode metadata forward to model
+    const modelMessages = convertToModelMessages(messages).map(msg => {
+        if (msg.role === "assistant") {
+            const lastUser = messages.filter(m => m.role === "user").pop();
+            if (lastUser?.metadata?.mode) {
+                msg.metadata = { mode: lastUser.metadata.mode };
+            }
+        }
+        return msg;
+    });
+
     const result = streamText({
         model: MODEL,
         system: SYSTEM_PROMPT,
-        messages: convertToModelMessages(messages),
+        messages: modelMessages,
         tools: {
             webSearch,
             vectorDatabaseSearch,
@@ -85,19 +98,8 @@ export async function POST(req: Request) {
         }
     });
 
-    // ⭐ NEW — after model responds, attach mode metadata to assistant messages
+    // ⭐ FIX — no transform
     return result.toUIMessageStreamResponse({
-        sendReasoning: true,
-        transform: (msg) => {
-            if (msg.role === "assistant") {
-                const lastUserMsg = messages.filter(m => m.role === "user").pop();
-                const mode = lastUserMsg?.metadata?.mode;
-
-                if (mode) {
-                    msg.metadata = { ...(msg.metadata || {}), mode };
-                }
-            }
-            return msg;
-        }
+        sendReasoning: true
     });
 }
