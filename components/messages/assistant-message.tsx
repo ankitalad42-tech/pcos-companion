@@ -90,7 +90,10 @@ export function AssistantMessage({
         <div className="assistant-text markdown-content">
           {message.parts?.map((p, i) =>
             p.type === "text" ? (
-              <ReactMarkdown key={i}>{p.text}</ReactMarkdown>
+              // ⭐ ADDED className="markdown-table"
+              <ReactMarkdown key={i} className="markdown-table">
+                {p.text}
+              </ReactMarkdown>
             ) : null
           )}
         </div>
