@@ -158,6 +158,17 @@
   white-space: pre-line;
 }
 
+/* FIX TABLES INSIDE PRE-LINE BUBBLE */
+.markdown-table table,
+.markdown-table thead,
+.markdown-table tbody,
+.markdown-table tr,
+.markdown-table th,
+.markdown-table td {
+  white-space: normal !important;
+}
+
+
 /* ================================
    MARKDOWN TABLE FIX (FINAL VERSION)
    ================================ */
