@@ -22,13 +22,14 @@ export function MessageWall({
 
   return (
     <div className="w-full px-5">
-      <div className="flex flex-col gap-4 max-w-2xl">
+      {/* ⭐ FIX: Add w-full so messages can split left + right */}
+      <div className="flex flex-col gap-4 max-w-2xl w-full">
 
         {messages.map((m, i) => {
           const isLast = i === messages.length - 1;
 
           return (
-            <div key={m.id}>
+            <div key={m.id} className="w-full">
               {/* Divider */}
               {i !== 0 && <div className="message-divider"></div>}
 
