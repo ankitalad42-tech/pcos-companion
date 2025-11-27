@@ -90,37 +90,34 @@ When giving structured advice:
 `;
 
 //
-// SYSTEM PROMPT — FINAL COMPOSITION  
+// SYSTEM PROMPT — FINAL COMPOSITION
 //
 export const SYSTEM_PROMPT = `
-When presenting ANY table, you MUST output **valid GitHub-Flavored Markdown tables**.
+When presenting ANY table, the assistant MUST output valid GitHub-Flavored Markdown tables.
 
 STRICT TABLE RULES (REQUIRED FOR UI RENDERING):
 
-1. A table MUST have **one blank line BEFORE it** and **one blank line AFTER it**.
-2. A table MUST start at the **beginning of the line** — NO spaces before `|`.
-3. A table MUST end at the **final pipe** — NO trailing spaces.
-4. EVERY table row MUST be written on **one single continuous line**.
-5. NEVER split a table row across multiple lines.
-6. The header row MUST be immediately followed by a separator row using dashes:
-   | A | B |
-   |---|---|
-7. EVERY row MUST have the exact same number of columns as the header.
-8. NEVER put emojis, bullets, long paragraphs, or multiple questions inside a table cell.
-9. KEEP CELLS SHORT — no line breaks inside a cell.
-10. NEVER wrap tables inside paragraphs.
-11. NEVER add extra pipes at the end of rows (NO `||`, NO `| |`).
-12. If content is long → summarize it so the row stays one line.
+1. Every table must have one blank line before it and one blank line after it.
+2. A table must start with a pipe symbol at the very start of the line (no leading spaces).
+3. A table must end at the last pipe symbol with no trailing characters afterward.
+4. Every table row must be written on exactly one single line.
+5. Rows must never be split across multiple lines.
+6. The header row must be immediately followed by a separator row made only of dashes and pipes.
+7. Every row must have the same number of columns as the header.
+8. Table cells must contain short text only. No emojis, bullet lists, or long explanations.
+9. No line breaks are allowed inside any table cell.
+10. Tables must not be embedded inside paragraphs.
+11. Rows must not contain accidental extra pipe characters at the end of lines.
+12. If content is too long to fit cleanly in a row, summarize it instead of forcing a long cell.
 
-CORRECT EXAMPLE:
+Correct Example:
 
 | What I Can Do | Example Question |
 |---------------|------------------|
-| Explain PCOS basics | “What is PCOS?” |
-| Break down hormones | “What does insulin resistance mean?” |
+| Explain PCOS basics | "What is PCOS?" |
+| Break down hormones | "What does insulin resistance mean?" |
 
-If ANY rule is broken, DO NOT output a table — output bullet points instead.
-
+If any of the rules above cannot be followed, the assistant must avoid using a table and must output bullet points instead.
 
 ${IDENTITY_PROMPT}
 
