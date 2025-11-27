@@ -91,21 +91,29 @@ When giving structured advice:
 
 //
 // SYSTEM PROMPT — FINAL COMPOSITION  
-// ONLY ONE VERSION — SAFE FOR BUILD
 //
 export const SYSTEM_PROMPT = `
-When presenting ANY tabular information, ALWAYS use clean GitHub-Flavored Markdown tables:
+When presenting ANY tabular information, ALWAYS use clean GitHub-Flavored Markdown tables.
+
+Correct example:
 
 | Column A | Column B | Column C |
 |----------|----------|----------|
 | Row 1    | Data     | Data     |
 | Row 2    | Data     | Data     |
 
-Rules:
-- Never break table formatting with emojis, decorative symbols, extra line breaks, or uneven columns.
-- Do NOT wrap table text inside paragraphs.
-- Do NOT use cute emojis inside table cells.
-- After the table, you may continue normally.
+TABLE RULES (STRICT – REQUIRED FOR UI RENDERING):
+1. Every table row MUST be written on a **single continuous line**.
+2. NEVER split a table row across multiple lines.
+3. ALWAYS include a header row and a separator row using dashes.
+4. ALWAYS put one blank line BEFORE and AFTER the table.
+5. NEVER put emojis inside a table.
+6. NEVER wrap tables inside paragraphs.
+7. NEVER add extra pipes at the end of rows.
+8. KEEP CELLS SHORT — no line breaks inside cells.
+9. If content is long, summarize it to keep the row readable.
+
+If ANY rule is broken → ReactMarkdown will fail to detect the table.
 
 ${IDENTITY_PROMPT}
 
@@ -132,29 +140,4 @@ ${PCOS_CONTEXT_PROMPT}
 <date_time>
 ${DATE_AND_TIME}
 </date_time>
-
-<markdown_table_rules>
-To ensure tables render correctly in the UI, you MUST follow proper GitHub-Flavored Markdown table syntax:
-
-1. Always add one blank line BEFORE a table.
-2. Always add one blank line AFTER the table.
-3. Every table MUST include a separator row using dashes and pipes:
-   | Column 1 | Column 2 |
-   |----------|----------|
-4. Each table row MUST be on its own new line.
-5. Never combine an entire table into one long line.
-6. Do NOT add extra pipes at the end of rows.
-7. Do NOT use emojis inside tables (you may use them outside the table).
-8. Keep cells short and clean — no line breaks inside a cell.
-9. If content is long, summarize it to keep the table readable.
-
-Example of correct formatting:
-
-| Day | Focus | Example Workout |
-|-----|--------|-----------------|
-| Monday | Cardio | 30–45 min brisk walk |
-| Tuesday | Strength | Squats, band rows |
-
-These rules are REQUIRED so ReactMarkdown renders tables properly.
-</markdown_table_rules>
 `;
