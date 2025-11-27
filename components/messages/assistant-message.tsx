@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UIMessage } from "ai";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";   // ⭐ ADDED — Markdown support
+import ReactMarkdown from "react-markdown";
 
 export function AssistantMessage({
   message,
@@ -87,10 +87,9 @@ export function AssistantMessage({
       />
 
       <div className="fancy-bubble">
-        <div className="assistant-text">
+        <div className="assistant-text markdown-content">
           {message.parts?.map((p, i) =>
             p.type === "text" ? (
-              // ⭐ REPLACED — Markdown rendering
               <ReactMarkdown key={i}>{p.text}</ReactMarkdown>
             ) : null
           )}
