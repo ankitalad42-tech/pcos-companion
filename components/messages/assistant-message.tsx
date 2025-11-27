@@ -29,8 +29,54 @@ export function AssistantMessage({
     }
   }, [isLastMessage, status, startTime, id, onDurationChange]);
 
+  // 🌸 MODE MECHANISM ADDED (SAFE ADDITION)
+  const mode = message.metadata?.mode;
+
+  const modeStyles: Record<string, string> = {
+    wellness: "bg-pink-100 text-pink-700 border-pink-200",
+    nutrition: "bg-rose-100 text-rose-700 border-rose-200",
+    fitness: "bg-purple-100 text-purple-700 border-purple-200",
+    stress: "bg-blue-100 text-blue-700 border-blue-200",
+    coach: "bg-amber-100 text-amber-700 border-amber-200",
+    hormones: "bg-fuchsia-100 text-fuchsia-700 border-fuchsia-200",
+    cycle: "bg-violet-100 text-violet-700 border-violet-200",
+    skincare: "bg-neutral-200 text-neutral-700 border-neutral-300",
+    cravings: "bg-rose-50 text-rose-700 border-rose-200",
+    mealplan: "bg-teal-100 text-teal-700 border-teal-200",
+    beginner: "bg-green-100 text-green-700 border-green-200",
+    emotional: "bg-yellow-100 text-yellow-700 border-yellow-200",
+  };
+
+  const modeLabels: Record<string, string> = {
+    wellness: "Wellness Mode",
+    nutrition: "Nutrition Mode",
+    fitness: "Fitness Mode",
+    stress: "Stress & Sleep Mode",
+    coach: "Coach Mode",
+    hormones: "Hormone Balance Mode",
+    cycle: "Cycle Tracking Mode",
+    skincare: "Skin & Hair Mode",
+    cravings: "Craving Help Mode",
+    mealplan: "Meal Planning Mode",
+    beginner: "Beginner Mode",
+    emotional: "Emotional Support Mode",
+  };
+
   return (
     <div className="assistant-wrapper">
+
+      {/* 🌸 MODE LABEL — ADDED NEW */}
+      {mode && (
+        <div
+          className={`
+            mode-label mb-1 ml-12 px-3 py-1 rounded-full text-sm font-medium border
+            ${modeStyles[mode] || "bg-pink-50 text-pink-700 border-pink-200"}
+          `}
+        >
+          {modeLabels[mode] || "Mode"}
+        </div>
+      )}
+
       {/* Avatar */}
       <Image
         src="/logo.png"
