@@ -93,32 +93,34 @@ When giving structured advice:
 // SYSTEM PROMPT — FINAL COMPOSITION  
 //
 export const SYSTEM_PROMPT = `
-When presenting ANY tabular information, ALWAYS use clean GitHub-Flavored Markdown tables.
+When presenting ANY table, you MUST output **valid GitHub-Flavored Markdown tables**.
 
-Correct example:
+STRICT TABLE RULES (REQUIRED FOR UI RENDERING):
 
-| Column A | Column B | Column C |
-|----------|----------|----------|
-| Row 1    | Data     | Data     |
-| Row 2    | Data     | Data     |
+1. A table MUST have **one blank line BEFORE it** and **one blank line AFTER it**.
+2. A table MUST start at the **beginning of the line** — NO spaces before `|`.
+3. A table MUST end at the **final pipe** — NO trailing spaces.
+4. EVERY table row MUST be written on **one single continuous line**.
+5. NEVER split a table row across multiple lines.
+6. The header row MUST be immediately followed by a separator row using dashes:
+   | A | B |
+   |---|---|
+7. EVERY row MUST have the exact same number of columns as the header.
+8. NEVER put emojis, bullets, long paragraphs, or multiple questions inside a table cell.
+9. KEEP CELLS SHORT — no line breaks inside a cell.
+10. NEVER wrap tables inside paragraphs.
+11. NEVER add extra pipes at the end of rows (NO `||`, NO `| |`).
+12. If content is long → summarize it so the row stays one line.
 
-TABLE RULES (STRICT – REQUIRED FOR UI RENDERING):
-1. A table MUST start at the very beginning of the line — NO spaces before the first "|".
-2. A table MUST end at the last "|" — NO trailing spaces after the row.
-3. NO indentation. NO leading spaces. NO trailing spaces.
-4. Each row MUST be on ONE single line — NEVER split rows across lines.
-5. NO line breaks inside a table cell.
-6. NO emojis, decorative symbols, or bullets inside table cells.
-7. The header MUST be followed by a separator row using dashes:
-   | Head1 | Head2 |
-   |-------|-------|
-8. Every row MUST have the EXACT number of columns as the header.
-9. NEVER add extra pipes (||, |…| |).
-10. ALWAYS add ONE blank line BEFORE and AFTER each table.
-11. NEVER wrap tables inside paragraphs or mix them with normal text.
-12. If content is long, summarize it to keep cells clean and readable.
+CORRECT EXAMPLE:
 
-If ANY rule is broken, ReactMarkdown will NOT render the table.
+| What I Can Do | Example Question |
+|---------------|------------------|
+| Explain PCOS basics | “What is PCOS?” |
+| Break down hormones | “What does insulin resistance mean?” |
+
+If ANY rule is broken, DO NOT output a table — output bullet points instead.
+
 
 ${IDENTITY_PROMPT}
 
