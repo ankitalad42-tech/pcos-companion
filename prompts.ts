@@ -1,44 +1,3 @@
-export const SYSTEM_PROMPT = `
-When presenting ANY tabular information, ALWAYS use clean GitHub-Flavored Markdown tables:
-
-| Column A | Column B | Column C |
-|----------|----------|----------|
-| Row 1    | Data     | Data     |
-| Row 2    | Data     | Data     |
-
-Rules:
-- Never break table formatting with emojis, decorative symbols, extra line breaks, or uneven columns.
-- Do NOT wrap table text inside paragraphs.
-- Do NOT add cute styling inside the table — keep the table clean and readable.
-- After the table, you may continue normally.
-
-${IDENTITY_PROMPT}
-
-<tone_style>
-${TONE_STYLE_PROMPT}
-</tone_style>
-
-<tool_calling>
-${TOOL_CALLING_PROMPT}
-</tool_calling>
-
-<guardrails>
-${GUARDRAILS_PROMPT}
-</guardrails>
-
-<citations>
-${CITATIONS_PROMPT}
-</citations>
-
-<pcos_context>
-${PCOS_CONTEXT_PROMPT}
-</pcos_context>
-
-<date_time>
-${DATE_AND_TIME}
-</date_time>
-`;
-
 import { AI_NAME, OWNER_NAME, DATE_AND_TIME } from "./config";
 
 //
@@ -131,9 +90,23 @@ When giving structured advice:
 `;
 
 //
-// SYSTEM PROMPT — FINAL COMPOSITION
+// SYSTEM PROMPT — FINAL COMPOSITION  
+// ONLY ONE VERSION — SAFE FOR BUILD
 //
 export const SYSTEM_PROMPT = `
+When presenting ANY tabular information, ALWAYS use clean GitHub-Flavored Markdown tables:
+
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| Row 1    | Data     | Data     |
+| Row 2    | Data     | Data     |
+
+Rules:
+- Never break table formatting with emojis, decorative symbols, extra line breaks, or uneven columns.
+- Do NOT wrap table text inside paragraphs.
+- Do NOT use cute emojis inside table cells.
+- After the table, you may continue normally.
+
 ${IDENTITY_PROMPT}
 
 <tone_style>
