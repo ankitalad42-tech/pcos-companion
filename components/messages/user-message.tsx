@@ -26,10 +26,13 @@ export function UserMessage({
   return (
     <div className="w-full flex pr-2 my-2">
       {/* ⭐ FIX: Push bubble to extreme right */}
-      <div className="user-bubble animate-pop ml-auto">
+      <div className="user-bubble animate-pop ml-auto user-fancy-bubble">
         {message.parts?.map((part, index) =>
           part.type === "text" ? <p key={index}>{part.text}</p> : null
         )}
+
+        {/* ⭐ ADD: Bubble tail on right side */}
+        <div className="user-bubble-tail" />
       </div>
 
       {/* OPTIONAL TIMESTAMP */}
