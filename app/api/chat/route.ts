@@ -4,7 +4,7 @@ import {
   convertToModelMessages,
   stepCountIs,
   createUIMessageStream,
-  createUIMessageStreamResponse
+  createUIMessageStreamResponse,
 } from "ai";
 
 import { MODEL } from "@/config";
@@ -42,11 +42,11 @@ export async function POST(req: Request) {
               id: textId,
               delta:
                 moderationResult.denialMessage ||
-                "Your message violates our guidelines. I can't answer that."
+                "Your message violates our guidelines. I can't answer that.",
             });
             writer.write({ type: "text-end", id: textId });
             writer.write({ type: "finish" });
-          }
+          },
         });
 
         return createUIMessageStreamResponse({ stream });
@@ -61,36 +61,44 @@ export async function POST(req: Request) {
     messages: convertToModelMessages(messages),
     tools: {
       webSearch,
-      vectorDatabaseSearch
+      vectorDatabaseSearch,
     },
     stopWhen: stepCountIs(10),
     providerOptions: {
       openai: {
         reasoningSummary: "auto",
         reasoningEffort: "low",
-        parallelToolCalls: false
-      }
-    }
+        parallelToolCalls: false,
+      },
+    },
   });
 
-  // ⭐ FIXED METADATA MODE INJECTION FOR ASSISTANT
-  return result.toUIMessageStreamResponse({
-    sendReasoning: true,
+  // ⭐ NEW: SAFE MODE-INJECTION WRAPPER
+  const stream = createUIMessageStream({
+    async execute({ writer }) {
+      // Start event
+      writer.write({ type: "start" });
 
-    // ⭐ THIS IS THE ONLY PART WE PATCHED SAFELY
-    transform: (msg) => {
-      if (msg.role === "assistant") {
-        const lastUser = messages.filter(m => m.role === "user").pop();
+      // Pipe from model
+      for await (const msg of result) {
+        // Detect assistant messages
+        if (msg.role === "assistant") {
+          const lastUser = messages.filter(m => m.role === "user").pop();
+          const userMeta = (lastUser as any)?.metadata;
 
-        // FIX: Type-safe metadata extraction
-        const userMeta = (lastUser as any)?.metadata as any;
-
-        if (userMeta?.mode) {
-          msg.metadata = { mode: userMeta.mode };
+          if (userMeta?.mode) {
+            // ⭐ Inject mode metadata
+            msg.metadata = { mode: userMeta.mode };
+          }
         }
+
+        // Forward message to UI
+        writer.write(msg);
       }
 
-      return msg;
-    }
+      writer.write({ type: "finish" });
+    },
   });
+
+  return createUIMessageStreamResponse({ stream });
 }
