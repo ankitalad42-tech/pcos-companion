@@ -103,17 +103,22 @@ Correct example:
 | Row 2    | Data     | Data     |
 
 TABLE RULES (STRICT – REQUIRED FOR UI RENDERING):
-1. Every table row MUST be written on a **single continuous line**.
-2. NEVER split a table row across multiple lines.
-3. ALWAYS include a header row and a separator row using dashes.
-4. ALWAYS put one blank line BEFORE and AFTER the table.
-5. NEVER put emojis inside a table.
-6. NEVER wrap tables inside paragraphs.
-7. NEVER add extra pipes at the end of rows.
-8. KEEP CELLS SHORT — no line breaks inside cells.
-9. If content is long, summarize it to keep the row readable.
+1. A table MUST start at the very beginning of the line — NO spaces before the first "|".
+2. A table MUST end at the last "|" — NO trailing spaces after the row.
+3. NO indentation. NO leading spaces. NO trailing spaces.
+4. Each row MUST be on ONE single line — NEVER split rows across lines.
+5. NO line breaks inside a table cell.
+6. NO emojis, decorative symbols, or bullets inside table cells.
+7. The header MUST be followed by a separator row using dashes:
+   | Head1 | Head2 |
+   |-------|-------|
+8. Every row MUST have the EXACT number of columns as the header.
+9. NEVER add extra pipes (||, |…| |).
+10. ALWAYS add ONE blank line BEFORE and AFTER each table.
+11. NEVER wrap tables inside paragraphs or mix them with normal text.
+12. If content is long, summarize it to keep cells clean and readable.
 
-If ANY rule is broken → ReactMarkdown will fail to detect the table.
+If ANY rule is broken, ReactMarkdown will NOT render the table.
 
 ${IDENTITY_PROMPT}
 
