@@ -29,8 +29,8 @@ export function AssistantMessage({
     }
   }, [isLastMessage, status, startTime, id, onDurationChange]);
 
-  // 🌸 MODE MECHANISM ADDED (SAFE ADDITION)
-  const mode = message.metadata?.mode;
+  // 🌸 MODE MECHANISM — SAFE TS VERSION
+  const mode = (message.metadata as Record<string, any>)?.mode;
 
   const modeStyles: Record<string, string> = {
     wellness: "bg-pink-100 text-pink-700 border-pink-200",
@@ -65,7 +65,7 @@ export function AssistantMessage({
   return (
     <div className="assistant-wrapper">
 
-      {/* 🌸 MODE LABEL — ADDED NEW */}
+      {/* 🌸 MODE LABEL */}
       {mode && (
         <div
           className={`
