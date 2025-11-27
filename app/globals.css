@@ -324,22 +324,22 @@ header h1 {
 }
 
 /* ================================
-   USER BUBBLE — MATCH ASSISTANT SHAPE
+   USER BUBBLE — EXACT MATCH TO ASSISTANT SHAPE
    ================================ */
 
-/* Shape + gradient + soft shadow */
 .user-fancy-bubble {
-  background: linear-gradient(135deg, #ff9fc4 0%, #ff7eb0 100%);
-  border-radius: 1.25rem;
-  padding: 1.1rem 1.3rem;
-  border: 1px solid #ffb6d9;
-  box-shadow: 0 4px 10px rgba(255, 140, 180, 0.22);
+  background: linear-gradient(135deg, #ffeaf4 0%, #fbe9ff 100%); /* identical to assistant */
+  border-radius: 1.25rem; /* same radius */
+  padding: 1.1rem 1.3rem; /* same padding */
+  border: 1px solid #ffd1e8; /* same border */
+  box-shadow: 0 4px 10px rgba(255, 150, 200, 0.18); /* same shadow */
   max-width: 75%;
   position: relative;
-  animation: fadeIn 0.35s ease-out;
+  margin-left: auto; /* push bubble to the right */
+  animation: fadeIn 0.35s ease-out; /* same animation */
 }
 
-/* Right-side bubble tail */
+/* Mirrored bubble tail (right side) */
 .user-bubble-tail {
   position: absolute;
   right: -7px;
@@ -347,9 +347,8 @@ header h1 {
   width: 14px;
   height: 14px;
   background: inherit;
-  border-right: 1px solid #ffb6d9;
-  border-bottom: 1px solid #ffb6d9;
+  border-right: 1px solid #ffd1e8;
+  border-bottom: 1px solid #ffd1e8;
   transform: rotate(-45deg);
   border-bottom-right-radius: 3px;
 }
-
