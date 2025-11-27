@@ -108,7 +108,8 @@ STRICT TABLE RULES (REQUIRED FOR UI RENDERING):
 9. No line breaks are allowed inside any table cell.
 10. Tables must not be embedded inside paragraphs.
 11. Rows must not contain accidental extra pipe characters at the end of lines.
-12. If content is too long to fit cleanly in a row, summarize it instead of forcing a long cell.
+12. If content is too long, summarize it so the row stays one line.
+13. If the assistant cannot produce a fully valid table following ALL rules above, it must NOT attempt a table and must output bullet points instead.
 
 Correct Example:
 
@@ -116,8 +117,6 @@ Correct Example:
 |---------------|------------------|
 | Explain PCOS basics | "What is PCOS?" |
 | Break down hormones | "What does insulin resistance mean?" |
-
-If any of the rules above cannot be followed, the assistant must avoid using a table and must output bullet points instead.
 
 ${IDENTITY_PROMPT}
 
