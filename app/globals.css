@@ -158,6 +158,36 @@
   white-space: pre-line;
 }
 
+/* ================================
+   MARKDOWN TABLE FIX (DO NOT REMOVE pre-line)
+   ================================ */
+
+.assistant-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.95rem;
+}
+
+.assistant-text th,
+.assistant-text td {
+  border: 1px solid #ffd1e8;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.assistant-text th {
+  background: #ffecf6;
+  font-weight: 600;
+}
+
+.assistant-text tr:nth-child(even) {
+  background: #fff7fc;
+}
+
 /* fade-in animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }
